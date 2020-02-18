@@ -1,0 +1,26 @@
+version: "2"
+services:
+  runner-register:
+    container_name: runner-register
+    image: gitlab/gitlab-runner
+    volumes:
+          - ${GITLAB_RUNNER_CONFIG}:/etc/gitlab-runner
+    command:
+          - register
+          - --non-interactive
+          - --executor
+          - docker
+          - --docker-image
+          - alpine:latest
+          - --url
+          - ${GITLAB_SITE}
+          - --description
+          - docker-runner
+          - --tag-list
+          - docker
+          - --run-untagged=true
+          - --locked=false
+          - --access-level
+          - not_protected
+          - --registration-token
+          - '${REGISTRATION_TOKEN}'
