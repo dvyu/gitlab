@@ -32,8 +32,8 @@ services:
     image: nginx:1.11
     container_name: gitlab-proxy
     ports:
-      - '80:80'
-      - '443:443'
+      - "${HTTP_PORT}:80"
+      - "${HTTPS_PORT}:443"
     volumes:
       - ${CERTS}:/etc/nginx/certs
       - ${GITLAB_SITE}:/etc/nginx/conf.d/gitlab-web.conf
