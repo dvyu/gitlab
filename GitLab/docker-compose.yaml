@@ -38,7 +38,7 @@ services:
       - "${HTTPS_PORT}:443"
     volumes:
       - ${CERTS}:/etc/nginx/certs
-      - ${GITLAB_SITE}:/etc/nginx/conf.d/gitlab-web.conf
+      - ${GITLAB_SITE_CONFIG}:/etc/nginx/conf.d/gitlab-web.conf
     networks:
       - gitlab-network
 

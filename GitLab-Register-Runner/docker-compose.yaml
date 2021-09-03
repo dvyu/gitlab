@@ -13,7 +13,7 @@ services:
           - --docker-image
           - alpine:latest
           - --url
-          - ${GITLAB_SITE}
+          - ${GITLAB_SITE_URL}
           - --description
           - docker-runner
           - --tag-list
