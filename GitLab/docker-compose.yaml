@@ -9,14 +9,11 @@ services:
       - ${GITLAB_CONFIG}:/etc/gitlab
       - ${GITLAB_LOGS}:/var/log/gitlab
       - ${GITLAB_DATA}:/var/opt/gitlab
+    ports:
+      - "${GITLAB_SSH_PORT}:22"
+      - "127.0.0.1:${GITLAB_WEB_PORT}:80"
     environment:
       - GITLAB_ROOT_PASSWORD=${GITLAB_ROOT_PASSWORD}
-    #environment:
-    #GITLAB_OMNIBUS_CONFIG: |
-    #    gitlab_rails['gitlab_shell_ssh_port'] = 2222
-    #    registry_external_url 'http://localhost:4567'
-    #    registry['enable'] = true
-    #    unicorn['socket'] = '/opt/gitlab/var/unicorn/gitlab.socket'
     networks:
       - gitlab-network
 
